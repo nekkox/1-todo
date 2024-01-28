@@ -1,20 +1,25 @@
 <script setup>
 import ListItem from "@/components/ListItem.vue";
-import { ref, onMounted } from "vue";
+import { ref, computed } from "vue";
 
 const listItems = ref([
+  { title: "Szynka", checked: false },
+  { title: "Mleko", checked: false },
   { title: "Pizza", checked: true },
   { title: "Ser", checked: false },
-  { title: "Szynka", checked: false },
   { title: "Salami", checked: false },
 ]);
 
+const sortedItems = computed(() => {
+  return listItems.value.sort((a, b) => a.title.localeCompare(b.title));
+});
+
 function updateItem(item) {
   const updatedItem = findItemInList(item);
-    if(updatedItem){
-        console.log(updatedItem);
-        toggleItemChecked(updatedItem);
-    } 
+  if (updatedItem) {
+    console.log(updatedItem);
+    toggleItemChecked(updatedItem);
+  }
 }
 
 function findItemInList(item) {
@@ -28,7 +33,7 @@ function toggleItemChecked(item) {
 <template>
   <ul>
     <li
-      v-for="(item, index) in listItems"
+      v-for="(item, index) in sortedItems"
       :key="index"
       @click="updateItem(item)"
     >

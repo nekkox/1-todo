@@ -1,16 +1,12 @@
-<script setup lang="ts">
-import ListItem from "./components/ListItem.vue";
+<script setup>
+   
+    import ToDoList from "./components/TodoList.vue";
+    import Header from "./components/Header.vue";
 </script>
 
 <template>
-  <header>
-    <h1><span class="icon" aria-hidden="true">✅</span> To do</h1>
-    <p>Building App with Vue.js 3</p>
-  </header>
-
-  <ul>
-    <ListItem :is-checked="false">This is the slotted content</ListItem>
-  </ul>
+<Header />
+<ToDoList />
 </template>
 
 <style scoped>

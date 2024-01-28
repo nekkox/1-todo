@@ -1,11 +1,12 @@
 <script setup>
 import ListItem from "@/components/ListItem.vue";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onUpdated } from "vue";
 
 const storageItems = ref([]);
 
 const setToStorage = (items) => {
   localStorage.setItem("list-items", JSON.stringify(items));
+  console.log("Items saved to local storage:", items);
 };
 
 const getFromStorage = () => {
@@ -17,6 +18,9 @@ const getFromStorage = () => {
 };
 
 function initListItems() {
+  storageItems.value = getFromStorage();
+  console.log("Items retrieved from local storage:", storageItems.value);
+
   if (storageItems.value?.length === 0) {
     const listItems = [
       { id: 1, title: "Szynka", checked: false },
@@ -45,6 +49,7 @@ function updateItem(item) {
   if (updatedItem) {
     toggleItemChecked(updatedItem);
     setToStorage(storageItems.value);
+    console.log("Item updated:", updatedItem);
   }
 }
 

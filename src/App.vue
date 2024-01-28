@@ -1,12 +1,11 @@
 <script setup>
-   
-    import ToDoList from "./components/TodoList.vue";
-    import Header from "./components/Header.vue";
+import ToDoList from "./components/TodoList.vue";
+import Header from "./components/Header.vue";
 </script>
 
 <template>
-<Header />
-<ToDoList />
+  <Header />
+  <ToDoList />
 </template>
 
 <style scoped>

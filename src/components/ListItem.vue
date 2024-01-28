@@ -1,10 +1,5 @@
 <script setup>
-const props = defineProps({
-  isChecked: {
-    type: Boolean,
-    required: false,
-  },
-});
+const props = defineProps(["isChecked"]);
 </script>
 
 <template>
